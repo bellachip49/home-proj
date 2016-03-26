@@ -70,7 +70,7 @@ try:
  
 # If CTRL+C is pressed the main loop is broken
 except KeyboardInterrupt:
-    RUNNING = False
+    RUNNING = False 
     print ("\Quitting")
  
 finally:
