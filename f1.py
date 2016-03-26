@@ -66,7 +66,7 @@ try:
                 for z in range(0,2):
                     print (x,y,z)
                     for i in range(0,101):
-                        color((x*i),(y*i),(z*i), .02)
+                        color((x * i),(y * i),(z * i), 0.02)
  
 # If CTRL+C is pressed the main loop is broken
 except KeyboardInterrupt:
