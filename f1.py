@@ -20,6 +20,7 @@ GPIO.setup(green, GPIO.OUT)
 GPIO.setup(green1, GPIO.OUT)
 GPIO.setup(blue, GPIO.OUT)
 GPIO.setup(blue1, GPIO.OUT)
+GPIO.setup(25, GPIO.IN, pull_up_down = GPIO.PUD_UP)
 
 Freq = 100 #Hz
  
@@ -38,12 +39,12 @@ BLUE1.start(0)
  
 def color(R, G, B, on_time):
     # Color brightness range is 0-100%
-    RED.ChangeDutyCycle(R)
-    GREEN.ChangeDutyCycle(G)
-    BLUE.ChangeDutyCycle(B)
-    RED1.ChangeDutyCycle(R)
-    GREEN1.ChangeDutyCycle(G)
-    BLUE1.ChangeDutyCycle(B)
+    RED.ChangeDutyCycle(100)
+    GREEN.ChangeDutyCycle(100)
+    BLUE.ChangeDutyCycle(100)
+    RED1.ChangeDutyCycle(100)
+    GREEN1.ChangeDutyCycle(100)
+    BLUE1.ChangeDutyCycle(100)
     time.sleep(on_time)
  
     # Turn all LEDs off after on_time seconds
@@ -57,22 +58,14 @@ def color(R, G, B, on_time):
 print("Light It Up!")
 print("Press CTRL + C to quit.\n")
 print(" R  G  B\n---------")
- 
+
 # Main loop
-try:
-    while RUNNING:
-        for x in range(0,2):
-            for y in range(0,2):
-                for z in range(0,2):
-                    print (x,y,z)
-                    for i in range(0,101):
-                        color((x*i),(y*i),(z*i), .02)
- 
-# If CTRL+C is pressed the main loop is broken
-except KeyboardInterrupt:
-    RUNNING = False 
-    print ("\Quitting")
- 
-finally:
-    GPIO.cleanup()
+while RUNNING:
+    for x in range(0,2):
+        for y in range(0,2):
+            for z in range(0,2):
+                print (x,y,z)
+                for i in range(0,101):
+                    color((x * i),(y * i),(z * i), 0.02)
+GPIO.cleanup()
 
