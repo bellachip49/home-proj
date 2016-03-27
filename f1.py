@@ -62,8 +62,8 @@ print(" R  G  B\n---------")
 # Main loop
 while RUNNING:
     for x in range(0,2):
-    if(GPIO.input(25) == 1):
-        print ("hello")
+        if(GPIO.input(25) == 0):
+            print ("hello")
         for y in range(0,2):
             for z in range(0,2):
                 print (x,y,z)
