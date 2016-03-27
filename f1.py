@@ -67,5 +67,13 @@ while RUNNING:
                 print (x,y,z)
                 for i in range(0,101):
                     color((x * i),(y * i),(z * i), 0.02)
-GPIO.cleanup()
+
+ 
+# If CTRL+C is pressed the main loop is broken
+except KeyboardInterrupt:
+    RUNNING = False 
+    print ("\Quitting")
+ 
+finally:
+    GPIO.cleanup()
 
