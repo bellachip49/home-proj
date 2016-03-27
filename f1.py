@@ -68,7 +68,9 @@ while RUNNING:
                 for i in range(0,101):
                     color((x * i),(y * i),(z * i), 0.02)
 
- 
+if(GPIO.input(25) == 1):
+    print ("hello")
+    
 # If CTRL+C is pressed the main loop is broken
 if KeyboardInterrupt:
     RUNNING = False 
