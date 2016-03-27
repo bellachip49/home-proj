@@ -45,13 +45,7 @@ turn = 0
 # Main loop
 while RUNNING:
     if(GPIO.input(25) == 0):
-          color(100,0,0,.02)
-          time.sleep(2)
-          color(0,100,0,.02)
-          time.sleep(2)
-          color(0,0,100,.02)
-          time.sleep(2)
-
+      color(100,0,0,.02)
 # If CTRL+C is pressed the main loop is broken
 if KeyboardInterrupt:
     RUNNING = False 

@@ -25,12 +25,12 @@ GREEN.start(0)
 BLUE = GPIO.PWM(blue, Freq)
 BLUE.start(0)
  
-def color(R, G, B, on_time):
+def color(R, G, B):
     # Color brightness range is 0-100%
     RED.ChangeDutyCycle(R)
     GREEN.ChangeDutyCycle(G)
     BLUE.ChangeDutyCycle(B)
-    time.sleep(on_time)
+    time.sleep(2)
  
     # Turn all LEDs off after on_time seconds
     RED.ChangeDutyCycle(0)
@@ -45,18 +45,15 @@ turn = 0
 # Main loop
 while RUNNING:
     if(GPIO.input(25) == 0):
+        turn +=1
         if turn == 1:
-          color(100,0,0,.02)
-          time.sleep(2)
+          color(100,0,0)
         elif turn == 2:
-          color(0,100,0,.02)
-          time.sleep(2)
+          color(0,100,0)
         elif turn == 3:
-          color(0,0,100,.02)
-          time.sleep(2)
+          color(0,0,100)
         else:
-          turn = 1
-    turn += 1
+          turn = 0
 
 # If CTRL+C is pressed the main loop is broken
 if KeyboardInterrupt:
