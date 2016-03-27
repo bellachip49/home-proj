@@ -62,14 +62,15 @@ print(" R  G  B\n---------")
 # Main loop
 while RUNNING:
     for x in range(0,2):
+    if(GPIO.input(25) == 1):
+        print ("hello")
         for y in range(0,2):
             for z in range(0,2):
                 print (x,y,z)
                 for i in range(0,101):
                     color((x * i),(y * i),(z * i), 0.02)
 
-if(GPIO.input(25) == 1):
-    print ("hello")
+
     
 # If CTRL+C is pressed the main loop is broken
 if KeyboardInterrupt:
