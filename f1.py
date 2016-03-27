@@ -42,33 +42,26 @@ def color(R, G, B, on_time):
     RED.ChangeDutyCycle(R)
     GREEN.ChangeDutyCycle(G)
     BLUE.ChangeDutyCycle(B)
-    RED1.ChangeDutyCycle(R)
-    GREEN1.ChangeDutyCycle(G)
-    BLUE1.ChangeDutyCycle(B)
     time.sleep(on_time)
  
     # Turn all LEDs off after on_time seconds
     RED.ChangeDutyCycle(0)
     GREEN.ChangeDutyCycle(0)
     BLUE.ChangeDutyCycle(0)
-    RED1.ChangeDutyCycle(0)
-    GREEN1.ChangeDutyCycle(0)
-    BLUE1.ChangeDutyCycle(0)
- 
+   
 print("Light It Up!")
 print("Press CTRL + C to quit.\n")
 print(" R  G  B\n---------")
 
 # Main loop
 while RUNNING:
-    for x in range(0,2):
-        if(GPIO.input(25) == 0):
-            print ("hello")
-        for y in range(0,2):
-            for z in range(0,2):
-                print (x,y,z)
-                for i in range(0,101):
-                    color((x * i),(y * i),(z * i), 0.02)
+    if(GPIO.input(25) == 0):
+        for x in range(0,2):
+            for y in range(0,2):
+                for z in range(0,2):
+                    print (x,y,z)
+                    for i in range(0,101):
+                        color((x * i),(y * i),(z * i), 0.02)
 
 
     
