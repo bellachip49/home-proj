@@ -20,6 +20,7 @@ GPIO.setup(green, GPIO.OUT)
 GPIO.setup(green1, GPIO.OUT)
 GPIO.setup(blue, GPIO.OUT)
 GPIO.setup(blue1, GPIO.OUT)
+GPIO.setup(25, GPIO.IN, pull_up_down = GPIO.PUD_UP)
 
 Freq = 100 #Hz
  
@@ -57,16 +58,16 @@ def color(R, G, B, on_time):
 print("Light It Up!")
 print("Press CTRL + C to quit.\n")
 print(" R  G  B\n---------")
- 
+
 # Main loop
-try:
-    while RUNNING:
-        for x in range(0,2):
-            for y in range(0,2):
-                for z in range(0,2):
-                    print (x,y,z)
-                    for i in range(0,101):
-                        color((x * i),(y * i),(z * i), 0.02)
+while RUNNING:
+    for x in range(0,2):
+        for y in range(0,2):
+            for z in range(0,2):
+                print (x,y,z)
+                for i in range(0,101):
+                    color((x * i),(y * i),(z * i), 0.02)
+
  
 # If CTRL+C is pressed the main loop is broken
 except KeyboardInterrupt:
