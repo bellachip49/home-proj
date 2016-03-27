@@ -10,16 +10,10 @@ GPIO.setmode(GPIO.BCM)
 red = 18
 green = 24
 blue = 23 
-red1 = 16
-green1 = 12
-blue1 = 21 
  
 GPIO.setup(red, GPIO.OUT)
-GPIO.setup(red1, GPIO.OUT)
 GPIO.setup(green, GPIO.OUT)
-GPIO.setup(green1, GPIO.OUT)
 GPIO.setup(blue, GPIO.OUT)
-GPIO.setup(blue1, GPIO.OUT)
 GPIO.setup(25, GPIO.IN, pull_up_down = GPIO.PUD_UP)
 
 Freq = 100 #Hz
@@ -30,12 +24,6 @@ GREEN = GPIO.PWM(green, Freq)
 GREEN.start(0)
 BLUE = GPIO.PWM(blue, Freq)
 BLUE.start(0)
-RED1 = GPIO.PWM(red1, Freq)
-RED1.start(0)
-GREEN1 = GPIO.PWM(green1, Freq)
-GREEN1.start(0)
-BLUE1 = GPIO.PWM(blue1, Freq)
-BLUE1.start(0)
  
 def color(R, G, B, on_time):
     # Color brightness range is 0-100%
@@ -53,18 +41,23 @@ print("Light It Up!")
 print("Press CTRL + C to quit.\n")
 print(" R  G  B\n---------")
 
+turn = 0
 # Main loop
 while RUNNING:
     if(GPIO.input(25) == 0):
-        for x in range(0,2):
-            for y in range(0,2):
-                for z in range(0,2):
-                    print (x,y,z)
-                    for i in range(0,101):
-                        color((x * i),(y * i),(z * i), 0.02)
+        if turn == 1:
+          color(100,0,0,.02)
+          time.sleep(2)
+        elif turn == 2:
+          color(0,100,0,.02)
+          time.sleep(2)
+        elif turn == 3:
+          color(0,0,100,.02)
+          time.sleep(2)
+        else:
+          turn = 1
+    turn += 1
 
-
-    
 # If CTRL+C is pressed the main loop is broken
 if KeyboardInterrupt:
     RUNNING = False 
