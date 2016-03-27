@@ -39,12 +39,12 @@ BLUE1.start(0)
  
 def color(R, G, B, on_time):
     # Color brightness range is 0-100%
-    RED.ChangeDutyCycle(100)
-    GREEN.ChangeDutyCycle(100)
-    BLUE.ChangeDutyCycle(100)
-    RED1.ChangeDutyCycle(100)
-    GREEN1.ChangeDutyCycle(100)
-    BLUE1.ChangeDutyCycle(100)
+    RED.ChangeDutyCycle(R)
+    GREEN.ChangeDutyCycle(G)
+    BLUE.ChangeDutyCycle(B)
+    RED1.ChangeDutyCycle(R)
+    GREEN1.ChangeDutyCycle(G)
+    BLUE1.ChangeDutyCycle(B)
     time.sleep(on_time)
  
     # Turn all LEDs off after on_time seconds
