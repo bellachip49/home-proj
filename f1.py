@@ -70,10 +70,9 @@ while RUNNING:
 
  
 # If CTRL+C is pressed the main loop is broken
-except KeyboardInterrupt:
+if KeyboardInterrupt:
     RUNNING = False 
     print ("\Quitting")
  
-finally:
-    GPIO.cleanup()
+GPIO.cleanup()
 
