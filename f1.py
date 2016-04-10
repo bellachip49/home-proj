@@ -29,22 +29,23 @@ def color(R, G, B):
     RED.ChangeDutyCycle(R)
     GREEN.ChangeDutyCycle(G)
     BLUE.ChangeDutyCycle(B)
-    time.sleep(1)
  
-    RED.ChangeDutyCycle(0)
-    GREEN.ChangeDutyCycle(0)
-    BLUE.ChangeDutyCycle(0)
-   
 turn = 0
 while True:
     if(GPIO.input(25) == 0):
         turn +=1
         if turn == 1:
           color(100,0,0)
+          GREEN.ChangeDutyCycle(0)
+          BLUE.ChangeDutyCycle(0)
         elif turn == 2:
           color(0,100,0)
+          BLUE.ChangeDutyCycle(0)
+          RED.ChangeDutyCycle(0)
         elif turn == 3:
           color(0,0,100)
+          GREEN.ChangeDutyCycle(0)
+          RED.ChangeDutyCycle(0)
         else:
           turn = 0
 
