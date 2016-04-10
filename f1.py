@@ -62,8 +62,11 @@ def button1(turn):
     else:
         turn = 0
 
-def button2(turn):
-    turn += 1
+while True:
+    #if (GPIO.input(25) == 0):
+    #    button1(0)
+    if (GPIO.input(21) == 0):
+            turn += 1
     if turn == 1:
         color1(100,0,0)
         time.sleep(.2)
@@ -75,12 +78,6 @@ def button2(turn):
         time.sleep(.2)
     else:
         turn = 0
-
-while True:
-    #if (GPIO.input(25) == 0):
-    #    button1(0)
-    if (GPIO.input(21) == 0):
-        button2(0)
 
 GPIO.cleanup()
 
