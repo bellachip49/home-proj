@@ -65,13 +65,13 @@ def button1(turn):
 def button2(turn):
         turn +=1
         if turn == 1:
-          color(100,0,0)
+          color1(100,0,0)
           time.sleep(.2)
         elif turn == 2:
-          color(0,100,0)
+          color1(0,100,0)
           time.sleep(.2)
         elif turn == 3:
-          color(0,0,100)
+          color1(0,0,100)
           time.sleep(.2)
         else:
           turn = 0
