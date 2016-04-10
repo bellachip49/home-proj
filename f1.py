@@ -49,38 +49,38 @@ def color1(R1, G1, B1):
     BLUE1.ChangeDutyCycle(B1)
     
 def button1(turn):
-    if(GPIO.input(25) == 0):
-        turn +=1
-        if turn == 1:
-          color(100,0,0)
-          time.sleep(.2)
-        elif turn == 2:
-          color(0,100,0)
-          time.sleep(.2)
-        elif turn == 3:
-          color(0,0,100)
-          time.sleep(.2)
-        else:
-          turn = 0
+    turn += 1
+    if turn == 1:
+        color(100,0,0)
+        time.sleep(.2)
+    elif turn == 2:
+        color(0,100,0)
+        time.sleep(.2)
+    elif turn == 3:
+        color(0,0,100)
+        time.sleep(.2)
+    else:
+        turn = 0
 
 def button2(turn):
-    if(GPIO.input(21) == 0):
-        turn +=1
-        if turn == 1:
-          color1(100,0,0)
-          time.sleep(.2)
-        elif turn == 2:
-          color1(0,100,0)
-          time.sleep(.2)
-        elif turn == 3:
-          color1(0,0,100)
-          time.sleep(.2)
-        else:
-          turn = 0
+    turn += 1
+    if turn == 1:
+        color1(100,0,0)
+        time.sleep(.2)
+    elif turn == 2:
+        color1(0,100,0)
+        time.sleep(.2)
+    elif turn == 3:
+        color1(0,0,100)
+        time.sleep(.2)
+    else:
+        turn = 0
 
 while True:
-    button1(0)
-    button2(0)
+    #if (GPIO.input(25) == 0):
+    #    button1(0)
+    if (GPIO.input(21) == 0):
+        button2(0)
 
 GPIO.cleanup()
 
