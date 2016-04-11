@@ -37,47 +37,35 @@ GREEN1 = GPIO.PWM(green1, Freq)
 GREEN1.start(0)
 BLUE1 = GPIO.PWM(blue1, Freq)
 BLUE1.start(0)
+
+led0 = { 'RED' :RED, 'GREEN': GREEN, 'BLUE': BLUE, 'turn': 0 }
+led1 = { 'RED' :RED1, 'GREEN': GREEN1, 'BLUE': BLUE1, 'turn': 0 }
  
-def color(R, G, B):
-    RED.ChangeDutyCycle(R)
-    GREEN.ChangeDutyCycle(G)
-    BLUE.ChangeDutyCycle(B)
-
-def color1(R1, G1, B1):
-    RED1.ChangeDutyCycle(R1)
-    GREEN1.ChangeDutyCycle(G1)
-    BLUE1.ChangeDutyCycle(B1)
-    
-def button1(turn):
-    turn += 1
-    if turn == 1:
-        color(100,0,0)
-        time.sleep(.2)
-    elif turn == 2:
-        color(0,100,0)
-        time.sleep(.2)
-    elif turn == 3:
-        color(0,0,100)
-        time.sleep(.2)
-    else:
-        turn = 0
-
+def color_test(LED):
+   LED['turn'] += 1
+   if LED['turn'] == 1:
+       LED['RED'].ChangeDutyCycle(100)
+       LED['GREEN'].ChangeDutyCycle(0)
+       LED['BLUE'].ChangeDutyCycle(0)
+       time.sleep(.2)
+   elif LED['turn'] == 2:
+       LED['RED'].ChangeDutyCycle(0)
+       LED['GREEN'].ChangeDutyCycle(100)
+       LED['BLUE'].ChangeDutyCycle(0)
+       time.sleep(.2)
+   elif LED['turn'] == 3:
+       LED['RED'].ChangeDutyCycle(0)
+       LED['GREEN'].ChangeDutyCycle(0)
+       LED['BLUE'].ChangeDutyCycle(100)
+       time.sleep(.2)
+   else:
+       LED['turn'] = 0
+      
 while True:
-    #if (GPIO.input(25) == 0):
-    #    button1(0)
+    if (GPIO.input(25) == 0):
+        color_test(led0)
     if (GPIO.input(21) == 0):
-            turn += 1
-    if turn == 1:
-        color1(100,0,0)
-        time.sleep(.2)
-    elif turn == 2:
-        color1(0,100,0)
-        time.sleep(.2)
-    elif turn == 3:
-        color1(0,0,100)
-        time.sleep(.2)
-    else:
-        turn = 0
+       	color_test(led1)
 
 GPIO.cleanup()
 
