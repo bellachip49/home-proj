@@ -1,0 +1,23 @@
+#Krystal Kwan
+#1/27/19
+#Recursive Rules with Sequences
+
+try:
+    print("Enter Number 1:")
+    num_1=int(input("> "))
+    print("Enter Number 2:")
+    num_2=int(input("> "))
+    # print("Enter mathematical operation: \nA) Add\nB) Subtract\nC)Multiply\nD)Divide")
+    # symbol=input("> ")
+    print("Enter ____th term to be found:")
+    answer=int(input("> "))
+
+    for i in range(answer):
+        num_3=num_2-num_1
+        print num_3
+        num_1=num2
+        num_2=num_3
+    print num_3
+
+except:
+    print("Invalid")
